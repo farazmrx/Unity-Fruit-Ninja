@@ -9,6 +9,8 @@ public class Fruit : MonoBehaviour
     private Collider fruitCollider;
     private ParticleSystem juiceEffect;
 
+    public int points = 1;
+
     private void Awake()
     {
         fruitRigidbody = GetComponent<Rigidbody>();
@@ -18,6 +20,8 @@ public class Fruit : MonoBehaviour
 
     private void Slice(Vector3 direction, Vector3 position, float force)
     {
+        FindObjectOfType<GameManager>().IncreaseScore(points);
+
         // Disable the whole fruit
         fruitCollider.enabled = false;
         whole.SetActive(false);
